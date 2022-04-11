@@ -42,7 +42,9 @@ const CompanyList = () => {
             )}
           </SimpleGrid>
         </>
-      :null}
+      :
+        <Heading fontSize='sm' color="gray.400">No se encontraron resultados</Heading>
+      }
     </>
   )
 }
