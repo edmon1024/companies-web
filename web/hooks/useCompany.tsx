@@ -9,7 +9,8 @@ import {
 import { ICompanyCreation } from "../interfaces/Company";
 import { useToast } from "@chakra-ui/react"
 import { useRouter } from 'next/router'
-
+import { getErrors } from "../utils/Errors"
+import { getCode } from "../utils/Codes"
 
 export const useGetCompanies = () => {
   return useQuery(
@@ -56,8 +57,14 @@ export const useCreateCompany = () => {
         return { data }
       },
       onError: (error, data, context) => {
+        let errorTitle = "Hubo un error al crear la empresa"
+        const apiErrors = getErrors(error.response.data)
+        if (apiErrors.length > 0){
+          errorTitle = `${getCode(apiErrors[0].id)}: ${apiErrors[0].description}`
+        } 
+
         toast({
-          title: "Hubo un error al crear la empresa",
+          title: errorTitle,
           position: "top-right",
           isClosable: true,
           status: "error",
@@ -116,8 +123,14 @@ export const useUpdateCompany = () => {
         return { data }
       },
       onError: (error, data, context) => {
+        let errorTitle = "Hubo un error al actualizar la empresa"
+        const apiErrors = getErrors(error.response.data)
+        if (apiErrors.length > 0){
+          errorTitle = `${getCode(apiErrors[0].id)}: ${apiErrors[0].description}`
+        }
+
         toast({
-          title: "Hubo un error al actualizar la empresa",
+          title: errorTitle,
           position: "top-right",
           isClosable: true,
           status: "error",
@@ -163,8 +176,14 @@ export const useDeleteCompany = () => {
         return { data }
       },
       onError: (error, data, context) => {
+        let errorTitle = "Hubo un error al eliminar la empresa"
+        const apiErrors = getErrors(error.response.data)
+        if (apiErrors.length > 0){
+          errorTitle = `${getCode(apiErrors[0].id)}: ${apiErrors[0].description}`
+        }
+
         toast({
-          title: "Hubo un error al eliminar la empresa",
+          title: errorTitle,
           position: "top-right",
           isClosable: true,
           status: "error",

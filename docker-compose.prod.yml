@@ -11,7 +11,7 @@ services:
     container_name: companies_prod_web
     networks:
       companies_prod_net:
-        ipv4_address: 10.30.0.6
+        ipv4_address: 172.31.0.6
 
 
 networks:
@@ -20,5 +20,5 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.30.0.0/24
+        - subnet: 172.31.0.0/24
 

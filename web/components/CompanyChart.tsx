@@ -23,7 +23,7 @@ import {
 } from "../hooks/useCompany"
 import { companyRetrieveVoid } from "../interfaces/Company"
 
-const CompanyChart = ({ id="", isOpen, onOpen, onClose }) => {
+const CompanyChart = ({ id="", isOpen, onOpen, onClose }: {id:any; isOpen:any; onOpen:any; onClose:any;}) => {
   const queryClient = useQueryClient()
   const prevIdRef = useRef()
   const {
