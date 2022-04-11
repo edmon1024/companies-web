@@ -12,7 +12,7 @@ services:
       - ./app
     networks:
       companies_dev_net:
-        ipv4_address: 10.22.0.6
+        ipv4_address: 172.30.0.6
 
 networks:
   companies_dev_net:
@@ -20,4 +20,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 10.22.0.0/29
+        - subnet: 172.30.0.0/29
