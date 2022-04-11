@@ -1,0 +1,34 @@
+{
+  "name": "web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "axios": "^0.26.1",
+    "framer-motion": "^6.2.9",
+    "next": "12.1.4",
+    "react": "17.0.2",
+    "react-charts": "^3.0.0-beta.36",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.29.0",
+    "react-icons": "^4.3.1",
+    "react-query": "^3.34.19",
+    "react-table": "^7.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.23",
+    "@types/react": "18.0.1",
+    "@types/react-dom": "18.0.0",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.4",
+    "typescript": "4.5.5"
+  }
+}

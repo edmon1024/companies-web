@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  companies_prod_web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.prod
+    #command: "npm run start"
+    image: companies-prod-web:1.0
+    restart: always
+    container_name: companies_prod_web
+    networks:
+      companies_prod_net:
+        ipv4_address: 10.30.0.6
+
+
+networks:
+  companies_prod_net:
+    name: companies_prod_net
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.30.0.0/24
+

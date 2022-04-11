@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  companies_dev_web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    command: bash -c "npm install && npm run dev"
+    image: companies-dev-web:1.0
+    container_name: companies_dev_web
+    volumes:
+      - ./app
+    networks:
+      companies_dev_net:
+        ipv4_address: 10.22.0.6
+
+networks:
+  companies_dev_net:
+    name: companies_dev_net
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.22.0.0/29
