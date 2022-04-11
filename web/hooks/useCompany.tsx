@@ -4,6 +4,8 @@ import {
   createCompany as apiCreateCompany,
 } from "../pages/api/Company";
 import { ICompanyCreation } from "../interfaces/Company";
+import { useToast } from "@chakra-ui/react"
+import { useRouter } from 'next/router'
 
 
 export const useGetCompanies = () => {
@@ -21,6 +23,9 @@ export const useGetCompanies = () => {
 
 export const useCreateCompany = () => {
   const queryClient = useQueryClient();
+  const toast = useToast()
+  const router = useRouter()
+
 
   return useMutation(
     async (data: ICompanyCreation) => {
@@ -36,11 +41,25 @@ export const useCreateCompany = () => {
         return { previousValue }
       },
       onSuccess: async (data) => {
-        console.log("success-----")
+        toast({
+          title: "Se creó correctamente la empresa",
+          position: "top-right",
+          isClosable: true,
+          status: "success",
+        })
+  
+        router.push("/list")
+
         return { data }
       },
       onError: (error, data, context) => {
-        console.log("onError-----")
+        toast({
+          title: "Hubo un error al crear la empresa",
+          position: "top-right",
+          isClosable: true,
+          status: "error",
+        })
+  
         queryClient.setQueryData('companies', context.previousValue)
       },
       onSettled: (data) => {
