@@ -2,6 +2,9 @@ import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
   getCompanies as apiGetCompanies,
   createCompany as apiCreateCompany,
+  getCompany as apiGetCompany,
+  updateCompany as apiUpdateCompany,
+  deleteCompany as apiDeleteCompany,
 } from "../pages/api/Company";
 import { ICompanyCreation } from "../interfaces/Company";
 import { useToast } from "@chakra-ui/react"
@@ -69,5 +72,110 @@ export const useCreateCompany = () => {
   );
 }
 
+export const useGetCompany = (id: string) => {
+  return useQuery(
+    "company",
+    async () => {
+      return await apiGetCompany(id)
+    },
+    {
+      refetchOnWindowFocus: false,
+      select: ((data:any)  => { return data.data }),
+      enabled: !!id,
+    },
+  )
+}
 
+export const useUpdateCompany = () => {
+  const queryClient = useQueryClient();
+  const toast = useToast()
+  const router = useRouter()
+
+
+  return useMutation(
+    async ({ id, data }: { id: string, data: ICompanyCreation }) => {
+      return await apiUpdateCompany(id, data)
+    },
+    {
+      onMutate: async (data) => {
+        await queryClient.cancelQueries('companies')
+        const previousValue = queryClient.getQueryData('companies')
+
+        if (previousValue) queryClient.setQueryData('companies', old => old)
+
+        return { previousValue }
+      },
+      onSuccess: async (data) => {
+        toast({
+          title: "Se actualizo correctamente la empresa",
+          position: "top-right",
+          isClosable: true,
+          status: "info",
+        })
+
+        return { data }
+      },
+      onError: (error, data, context) => {
+        toast({
+          title: "Hubo un error al actualizar la empresa",
+          position: "top-right",
+          isClosable: true,
+          status: "error",
+        })
+
+        queryClient.setQueryData('companies', context.previousValue)
+      },
+      onSettled: (data) => {
+        queryClient.invalidateQueries('companies')
+      },
+    },
+  );
+}
+
+
+export const useDeleteCompany = () => {
+  const queryClient = useQueryClient();
+  const toast = useToast()
+  const router = useRouter()
+
+
+  return useMutation(
+    async (id: string) => {
+      return await apiDeleteCompany(id)
+    },
+    {
+      onMutate: async (data) => {
+        await queryClient.cancelQueries('companies')
+        const previousValue = queryClient.getQueryData('companies')
+
+        if (previousValue) queryClient.setQueryData('companies', old => old)
+
+        return { previousValue }
+      },
+      onSuccess: async (data) => {
+        toast({
+          title: "Se eliminó correctamente la empresa",
+          position: "top-right",
+          isClosable: true,
+          status: "info",
+        })
+
+        return { data }
+      },
+      onError: (error, data, context) => {
+        toast({
+          title: "Hubo un error al eliminar la empresa",
+          position: "top-right",
+          isClosable: true,
+          status: "error",
+        })
+
+        queryClient.setQueryData('companies', context.previousValue)
+      },
+      onSettled: (data) => {
+        queryClient.invalidateQueries('companies')
+      },
+    },
+  );
+}
 

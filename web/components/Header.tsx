@@ -26,14 +26,11 @@ const Header = () => {
       ps={9}
       pe={3}
       py={5}
-      bg={["blue.500", "blue.500", "transparent", "transparent"]}
-      color={["white", "white", "blue.700", "blue.700"]}
+      bg="blue.500"
+      color="white"
     >
       <Flex align="center">
-        <Title
-          w="100px"
-          color={["white", "white", "blue.500", "blue.500"]}
-        />
+        <Title/>
       </Flex>
 
       <Box display={{ base: "block", md: "none" }} onClick={toggleMenu}>

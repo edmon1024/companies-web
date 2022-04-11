@@ -8,7 +8,6 @@ const Layout = (props) => {
     <Flex
       direction="column"
       align="center"
-      maxW={{ xl: "1440px" }}
       m="0 auto"
     >
       <Header />

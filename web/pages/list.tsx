@@ -10,7 +10,7 @@ import {
   Text 
 } from "@chakra-ui/react";
 import Layout from "../components/layouts/Layout"
-import CompanyList from "../components/CompanyList"
+import { CompanyList } from "../components"
 
 
 const Register: NextPage = () => {

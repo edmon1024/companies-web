@@ -24,4 +24,37 @@ export async function createCompany(data: ICompanyCreation) {
   return await axios(config)
 }
 
+export async function getCompany(id: string) {
+  const url: string = `${API_URL}/company/${id}/`;
+
+  const config = {
+    url: url,
+  };
+
+  return await axios(config)
+}
+
+export async function updateCompany(id: string, data: ICompanyCreation) {
+  const url: string = `${API_URL}/company/${id}/`;
+
+  const config = {
+    method: "PATCH",
+    url: url,
+    data,
+  };
+
+  return await axios(config)
+}
+
+export async function deleteCompany(id: string) {
+  const url: string = `${API_URL}/company/${id}/`;
+
+  const config = {
+    method: "DELETE",
+    url: url,
+  };
+
+  return await axios(config)
+}
+
 
