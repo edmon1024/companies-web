@@ -52,9 +52,17 @@ const CompanyListMenu = ({ id="", name="" }) => {
         </MenuList>
       </Menu>
 
-      <CompanyChart id={id} isOpen={isOpenGraph} onOpen={onOpenGraph} onClose={onCloseGraph} />
-      <CompanyEdit id={id} isOpen={isOpenEdit} onOpen={onOpenEdit} onClose={onCloseEdit} />
-      <CompanyDelete id={id} name={name} isOpen={isOpenDelete} onOpen={onOpenDelete} onClose={onCloseDelete} />
+      {isOpenGraph ?
+        <CompanyChart id={id} isOpen={isOpenGraph} onOpen={onOpenGraph} onClose={onCloseGraph} />
+      :null}
+
+      {isOpenEdit ?
+        <CompanyEdit id={id} isOpen={isOpenEdit} onOpen={onOpenEdit} onClose={onCloseEdit} />
+      :null}
+
+      {isOpenDelete ?
+        <CompanyDelete id={id} name={name} isOpen={isOpenDelete} onOpen={onOpenDelete} onClose={onCloseDelete} />
+      :null}
     </>
   )
 }

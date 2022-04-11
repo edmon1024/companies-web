@@ -10,7 +10,7 @@ import {
   Text,
 } from '@chakra-ui/react'
 import { useGetCompanies } from "../hooks/useCompany"
-import { CompanyListMenu } from "./"
+import { CompanyListMenu, } from "./"
 
 const CompanyList = () => {
   const {
@@ -29,13 +29,14 @@ const CompanyList = () => {
                     <Box ps={4} pt={3}>
                       <Heading fontSize='sm' color="gray.400">{item.ticker}</Heading>
                     </Box>
+
                     <Spacer />
                     <Box>
                       <CompanyListMenu id={item.id} name={item.name} />
                     </Box>
                   </Flex>
-                  <Heading ps={4} pt={3} fontSize='xl'>{item.name}</Heading>
-                  <Text ps={4} mt={2} isTruncated>{item.description}</Text>
+                  <Heading ps={4} pt={3} pe={4} fontSize='xl'>{item.name}</Heading>
+                  <Text ps={4} mt={2} pe={4} isTruncated>{item.description}</Text>
                 </Stat>
               </Box>
             )}

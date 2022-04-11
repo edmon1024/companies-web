@@ -12,16 +12,17 @@
     "@chakra-ui/react": "^1.8.8",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@types/react-plotly.js": "^2.5.0",
     "axios": "^0.26.1",
     "framer-motion": "^6.2.9",
     "next": "12.1.4",
+    "plotly.js": "^2.11.1",
     "react": "17.0.2",
-    "react-charts": "^3.0.0-beta.36",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.29.0",
     "react-icons": "^4.3.1",
-    "react-query": "^3.34.19",
-    "react-table": "^7.7.0"
+    "react-plotly.js": "^2.5.1",
+    "react-query": "^3.34.19"
   },
   "devDependencies": {
     "@types/node": "17.0.23",
