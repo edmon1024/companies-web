@@ -12,11 +12,11 @@ import { useRouter } from 'next/router'
 import { getErrors } from "../utils/Errors"
 import { getCode } from "../utils/Codes"
 
-export const useGetCompanies = () => {
+export const useGetCompanies = (filters: { sort: string; search:string; }) => {
   return useQuery(
     "companies",
     async () => {
-      return await apiGetCompanies()
+      return await apiGetCompanies(filters)
     },
     {
       refetchOnWindowFocus: false,
